@@ -1,0 +1,42 @@
+.plates  img{
+    width: 200px;
+    height: 200px;
+    border: 10px solid black;
+    border-radius: 12px;
+}
+
+.plates ol{
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0px;
+}
+
+.cups img{
+    width: 200px;
+    height: 200px;
+     border: 10px solid black;
+    border-radius: 12px;
+
+}
+
+.cups ol{
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0px;
+}
+
+.spoons img{
+    width: 200px;
+    height: 200px;
+ border: 10px solid black;
+    border-radius: 12px;
+}
+
+.spoons ol{
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0px;
+}
