@@ -5,94 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hao Shop</title>
     <link rel="stylesheet" href="style.css">
-    
+</head>
 <body>
 
+    <!-- NAV -->
     <nav>
         <h1>LOGO</h1>
         <ul>
+            <li><a href="index.html">Home</a></li>
             <li><a href="latest.html">latest products</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="#cart">Cart</a></li>
         </ul>
     </nav>
 
     <h1>My shop</h1>
-    <h2>we sell the best of the best electronics</h2>
+    <h2>we sell the best of the best home goods</h2>
     <br>
 
+    <!-- FILTER + SORT -->
     <form action="">
         <div>
-        <label for="category">Search category</label>
-    <select id="text" name="text">
-        <option value="">select a category</option>
-        <option value="plates" class="plates">plates</option>
-        <option value="cups" class="cups">cups</option>
-        <option value="spoons" class="spoons">spoons</option>
-    </div>
+            <label for="category">Search category</label>
+            <select id="category" name="category">
+                <option value="all">All categories</option>
+                <option value="plates">plates</option>
+                <option value="cups">cups</option>
+                <option value="spoons">spoons</option>
+            </select>
+
+            <label for="sort">Sort by</label>
+            <select id="sort" name="sort">
+                <option value="default">Default</option>
+                <option value="low">Price: low to high</option>
+                <option value="high">Price: high to low</option>
+            </select>
+        </div>
     </form>
-</select>
 
+    <p>Products for Sale</p>
 
-<p>Products for Sale</p>
-    <div class="plates">
-     <ol>
-        <div>
-              <h4>Metal plates</h4>
-              <li><img src="images/metalplate.jpg" alt="plates" ></li>
-         </div>
+    <!-- ONE GRID FOR ALL PRODUCTS
+         class "plates / cups / spoons" = used by the filter
+         style="--price: ..."            = used by the sort -->
+    <div class="grid">
 
-         <div>
-             <h4>aluminium</h4>
-             <li><img src="images/aluminium.jpg" alt="plates" ></li>
-         </div>
+        <article class="card plates" style="--price: 150">
+            <img src="images/metalplate.jpg" alt="Metal plate">
+            <h3>Metal plates</h3>
+            <p class="stars">★★★★☆</p>
+            <p class="price">KSH 150</p>
+            <a href="#modal1">View details</a>
+            <button>Add to cart</button>
+        </article>
 
-         <div>
-             <h4>plates</h4>
-              <li><img src="images/plastic.jpg" alt="plates" ></li>
-         </div>
-     </ol>
+        <article class="card plates" style="--price: 250">
+            <img src="images/aluminium.jpg" alt="Aluminium plate">
+            <h3>Aluminium plates</h3>
+            <p class="stars">★★★★★</p>
+            <p class="price">KSH 250</p>
+            <a href="#modal2">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card plates" style="--price: 70">
+            <img src="images/plastic.jpg" alt="Plastic plate">
+            <h3>Plastic plates</h3>
+            <p class="stars">★★★☆☆</p>
+            <p class="price">KSH 70</p>
+            <a href="#modal3">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card cups" style="--price: 80">
+            <img src="images/metalcup.jpg" alt="Metal cup">
+            <h3>Metal cups</h3>
+            <p class="stars">★★★★☆</p>
+            <p class="price">KSH 80</p>
+            <a href="#modal4">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card cups" style="--price: 220">
+            <img src="images/aluminiumcup.webp" alt="Aluminium cup">
+            <h3>Aluminium cups</h3>
+            <p class="stars">★★★★★</p>
+            <p class="price">KSH 220</p>
+            <a href="#modal5">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card cups" style="--price: 150">
+            <img src="images/plasticcup.jpg" alt="Plastic cup">
+            <h3>Plastic cups</h3>
+            <p class="stars">★★★☆☆</p>
+            <p class="price">KSH 150</p>
+            <a href="#modal6">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card spoons" style="--price: 50">
+            <img src="images/metalspoon.jpg" alt="Metal spoon">
+            <h3>Metal spoons</h3>
+            <p class="stars">★★★★☆</p>
+            <p class="price">KSH 50</p>
+            <a href="#modal7">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card spoons" style="--price: 70">
+            <img src="images/aluminiumspoon.jpg" alt="Aluminium spoon">
+            <h3>Aluminium spoons</h3>
+            <p class="stars">★★★★☆</p>
+            <p class="price">KSH 70</p>
+            <a href="#modal8">View details</a>
+            <button>Add to cart</button>
+        </article>
+
+        <article class="card spoons" style="--price: 20">
+            <img src="images/plasticspoon.jpg" alt="Plastic spoon">
+            <h3>Plastic spoons</h3>
+            <p class="stars">★★★☆☆</p>
+            <p class="price">KSH 20</p>
+            <a href="#modal9">View details</a>
+            <button>Add to cart</button>
+        </article>
+
     </div>
-    <br>
-     <div class="cups">
-        <ol>
 
-     <div>
-         <h4>Metal cups</h4>
-         <img src="images/metalcup.jpg" alt="cups" >
-     </div>
+    <!-- =========== MODALS (product details) =========== -->
 
-     <div>
-         <h4>aluminium cups</h4>
-         <img src="images/aluminiumcup.webp" alt="cups" >
-     </div>
-
-     <div>
-         <h4>plastic cups</h4>
-         <img src="images/plasticcup.jpg" alt="cups" >
-     </div>
-
-     </ol>
+    <div class="modal" id="modal1">
+        <div class="modal-box">
+            <h3>Metal plates</h3>
+            <p>Strong, rust-resistant and easy to clean. KSH 150</p>
+            <a href="#close">Close</a>
+        </div>
     </div>
-    <br>
-    <div class="spoons">
-        <ol>
 
-      <div>
-         <h4>Metal spoons</h4>
-         <img src="images/metalspoon.jpg" alt="spoons" >
-     </div>
-
-    <div>
-         <h4>aluminiumspoon</h4>
-         <img src="images/aluminiumspoon.jpg" alt="spoons" >
-     </div>
-
-    <div>
-         <h4>plasticspoon</h4>
-         <img src="images/plasticspoon.jpg" alt="spoons" >
-         </div>
-
-     </ol>
+    <div class="modal" id="modal2">
+        <div class="modal-box">
+            <h3>Aluminium plates</h3>
+            <p>Light, durable and great for everyday meals. KSH 250</p>
+            <a href="#close">Close</a>
+        </div>
     </div>
+
+    <div class="modal" id="modal3">
+        <div class="modal-box">
+            <h3>Plastic plates</h3>
+            <p>Lightweight, affordable and easy to wash. KSH 70</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal4">
+        <div class="modal-box">
+            <h3>Metal cups</h3>
+            <p>Strong, rust-resistant and easy to clean. KSH 80</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal5">
+        <div class="modal-box">
+            <h3>Aluminium cups</h3>
+            <p>Light, durable and great for hot or cold drinks. KSH 220</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal6">
+        <div class="modal-box">
+            <h3>Plastic cups</h3>
+            <p>Lightweight, affordable and easy to wash. KSH 150</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal7">
+        <div class="modal-box">
+            <h3>Metal spoons</h3>
+            <p>Strong, rust-resistant and easy to clean. KSH 50</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal8">
+        <div class="modal-box">
+            <h3>Aluminium spoons</h3>
+            <p>Light, durable and great for everyday use. KSH 70</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal9">
+        <div class="modal-box">
+            <h3>Plastic spoons</h3>
+            <p>Lightweight, affordable and easy to wash. KSH 20</p>
+            <a href="#close">Close</a>
+        </div>
+    </div>
+
+    <!-- =========== CART SIDEBAR =========== -->
+    <aside id="cart">
+        <a href="#close">Close</a>
+
+        <h2>Your cart</h2>
+        <p>Metal plates - KSH 150</p>
+        <img src="images/metalplate.jpg" alt="Metal plate">
+    </aside>
+
 </body>
 </html>

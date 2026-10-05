@@ -1,42 +1,223 @@
-.plates  img{
+/* =========================================
+   HAO SHOP - style.css
+   Order: variables > base > nav > form > grid/cards
+          > filter/sort > modal > cart > animation
+          > mobile > print
+   ========================================= */
+
+/* 1. VARIABLES (colours live here) */
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --card-bg: #000000;
+  --brand: #0a7d5a;
+}
+
+/* Dark mode: switches automatically */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #f0f0f0;
+    --card-bg: #2a2a2a;
+  }
+}
+
+/* 2. BASE + TYPOGRAPHY */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 20px 20px;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 20px; font-weight: normal; }
+
+/* 3. NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--brand);
+  color: white;
+  padding: 0 20px;
+  margin: 0 -20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* 4. FORM (filter and sort) */
+form select {
+  padding: 6px;
+  margin-right: 12px;
+}
+
+/* 5. PRODUCT GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* 6. PRODUCT CARD */
+.card {
+  background-color: var(--card-bg);
+  color: white;
+  border: 10px solid var(--card-bg);
+  border-radius: 12px;
+  transition: transform 0.3s;
+  animation: fadeIn 1s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.card h3 { font-size: 18px; }
+
+.card a { color: white; }
+
+.stars {
+  color: gold;
+  font-size: 20px;
+  margin: 4px 0;
+}
+
+.price { font-weight: bold; }
+
+button {
+  background: var(--brand);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover { opacity: 0.8; }
+
+/* 7. FILTER (no JS): hide cards that don't match */
+body:has(#category option[value="plates"]:checked) .card:not(.plates) {
+  display: none;
+}
+
+body:has(#category option[value="cups"]:checked) .card:not(.cups) {
+  display: none;
+}
+
+body:has(#category option[value="spoons"]:checked) .card:not(.spoons) {
+  display: none;
+}
+
+/* 8. SORT (no JS): reorder cards by price */
+body:has(#sort option[value="low"]:checked) .card {
+  order: var(--price);
+}
+
+body:has(#sort option[value="high"]:checked) .card {
+  order: calc(var(--price) * -1);
+}
+
+/* 9. MODAL (hidden until its link is clicked) */
+.modal {
+  display: none;
+}
+
+.modal:target {
+  display: block;
+  position: fixed;
+  top: 100px;
+  left: 30%;
+  width: 40%;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  border: 2px solid var(--text);
+  z-index: 100;
+}
+
+/* 10. CART SIDEBAR (slides in when clicked) */
+#cart {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 250px;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  padding: 20px;
+  transition: right 0.3s;
+  z-index: 100;
+}
+
+#cart:target {
+  right: 0;
+}
+
+#cart img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--text);
+  border-radius: 12px;
+}
+
+/* 11. LOADING ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 12. MOBILE (screens narrower than 600px) */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .modal:target {
+    left: 5%;
+    width: 90%;
+  }
+  #cart {
     width: 200px;
-    height: 200px;
-    border: 10px solid black;
-    border-radius: 12px;
+  }
+  #cart img {
+    width: 150px;
+    height: 150px;
+  }
 }
 
-.plates ol{
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    padding: 0px;
-}
-
-.cups img{
-    width: 200px;
-    height: 200px;
-     border: 10px solid black;
-    border-radius: 12px;
-
-}
-
-.cups ol{
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    padding: 0px;
-}
-
-.spoons img{
-    width: 200px;
-    height: 200px;
- border: 10px solid black;
-    border-radius: 12px;
-}
-
-.spoons ol{
-    display: flex;
-    gap: 16px;
-    list-style: none;
-    padding: 0px;
+/* 13. PRINT */
+@media print {
+  nav, form, button, #cart {
+    display: none;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+  .card {
+    background: white;
+    color: black;
+    border: 1px solid black;
+  }
+  .card a {
+    color: black;
+  }
 }
